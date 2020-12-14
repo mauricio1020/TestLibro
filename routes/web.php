@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('admin/libro', 'Admin\LibroController')->middleware(['auth']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['middleware' =>'auth','as' => 'inicio','uses' => 'InicioController@index']);
+
+Auth::routes();
+
+
